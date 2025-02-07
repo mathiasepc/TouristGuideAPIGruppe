@@ -25,6 +25,4 @@ public class TouristController {
                 ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
                 : ResponseEntity.ok(attractions);
     }
-
-
 }
