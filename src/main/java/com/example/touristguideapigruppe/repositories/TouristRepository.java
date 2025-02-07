@@ -19,6 +19,15 @@ public class TouristRepository {
         return attractions;
     }
 
+    public TouristAttraction getByName(String name){
+        for(var item : attractions){
+            if(item.getName().equals(name))
+                return item;
+        }
+
+        return null;
+    }
+
     private void populateAttractions(){
         attractions.add(new TouristAttraction("Tivoli","Det er en forlystelses parke på sjælland"));
         attractions.add(new TouristAttraction("Assistent kirkegården","Det er en kirkegård med mange kendte"));
