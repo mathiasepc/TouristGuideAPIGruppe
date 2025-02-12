@@ -1,9 +1,10 @@
+
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto;
+    grid-template-rows: auto 1fr auto auto;
     justify-self: center;
-    gap: 10px;
+    gap: 20px;
     min-height: 100vh; /* Fylder siden ud */
 }
 
@@ -15,10 +16,17 @@ header {
     text-align: center;
 }
 
+.box{
+    padding: 20px;
+    width: 1fr;
+    background-color: rgb(165,42,42,0.35);
+}
+
 .under-header {
-    font-size: 13px;
+    font-size: 18px;
     color: white;
     font-style: italic;
+    font-weight: bold;
     text-align: center;
 }
 
@@ -27,6 +35,7 @@ nav {
     color: white;
     grid-area: nav;
     padding: 1em 1em 1em;
+    display: flex;
     flex-direction: column;
     align-items: center;
     position: sticky;
@@ -35,32 +44,32 @@ nav {
 }
 
 nav ul {
+    display: flex;
     list-style: none;
     color: white;
     padding: 0;
     gap: 20px;
 }
 
-nav li {
-    display: inline;
-    margin-right: 1em;
-}
-
 nav a {
     color: white;
     text-decoration: none; /* Fjerner stegen */
-    padding: 10px 15px;
+    padding: 10px 25px;
 }
 
 nav a:hover{
     background-color: rgb(139,0,0,0.20);
 }
 
+
 footer {
-    background-color:rgb(165,42,42,0.65)
+    grid-column: 1/4;
+    grid-row: 4;
+    background-color:rgb(165,42,42,0.65);
     color: white;
     text-align: center;
-    padding: 1em;
-    grid-area: footer;
-    width: 100%;
+    padding: 10px;
 }
+
+
+
