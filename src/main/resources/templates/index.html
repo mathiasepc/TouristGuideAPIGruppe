@@ -6,19 +6,49 @@
     <meta charset="UTF-8">
     <title>Index</title>
     <link rel="stylesheet" th:href="@{/css/General.css}">
+    <link rel="stylesheet" th:href="@{/css/Index.css}">
 </head>
-<body>
-<header>
-    <h1>Home</h1>
-</header>
+
+<div th:replace="fragments/header :: site-header"></div>
 <!-- th:replaces the current tag with the tag defining the fragment -->
 <!-- :: site-navbar betyder "brug kun dette fragment"-->
 <nav th:replace="fragments/navbar :: site-navbar"></nav>
-<main>
-    <p>hej</p>
+
+<div class="container">
+
+<main class="welcome-box">
+    <h3>VELKOMMEN TIL TURIST GUIDE - KØBENHAVN</h3>
+    <p>
+        Turistguiden er din digitale rejsepartner, der giver dig et overblik over de mest spændende attraktioner i København og omegn. Hjemmesiden er skabt til både turister, der besøger byen for første gang, og lokale, der ønsker at udforske nye sider af hovedstaden.
+        Guiden dækker en bred vifte af seværdigheder – fra ikoniske landemærker og historiske slotte til moderne arkitektur, grønne oaser og spændende kulturtilbud. Uanset om du vil opleve den klassiske storbycharme i Nyhavn, forlystelser i Tivoli, kunst på Louisiana eller den rå stemning i Reffen Street Food, finder du inspiration her.
+        <br>
+        <br>
+        Turistguiden henvender sig til alle typer besøgende. Den er ideel for familier, der leder efter børnevenlige oplevelser, kulturinteresserede, der vil dykke ned i byens historie, eventyrlystne rejsende, der ønsker at opdage skjulte perler, og naturliebhavere, der søger smukke parker og kystnære oplevelser.
+        <br>
+        <br>
+        Med vores guide får du praktiske oplysninger, billeder og beskrivelser af attraktionerne, så du nemt kan planlægge din tur. Uanset om du har en dag eller en uge i København, hjælper vi dig med at få det bedste ud af din oplevelse.
+    </p>
 </main>
+
+<main class="image-box-one">
+    <img src="/images/amalienborg.jpg" height="230" width="350">
+    <h3>AMALIENBORG</h3>
+    <p>Hvis du er tilhænger af de royale, er dette must at besøge. </p>
+</main>
+
+<main class="image-box-two">
+    <img src="/images/denlillehavfrue.jpg" height="230" width="350">
+    <h3>DEN LILLE HAVFRUE</h3>
+    <p>Indsæt tekst</p>
+</main>
+
+<main class="image-box-three">
+    <img src="/images/glyptoteket.jpg" height="230" width="350">
+    <h3>GLYPTOTEKET</h3>
+    <p>indsæt tekst</p>
+</main>
+</div>
 <!-- th:replaces the current tag with the tag defining the fragment -->
 <!-- :: site-navbar betyder "brug kun dette fragment"-->
 <footer th:replace="fragments/footer :: site-footer"></footer>
-</body>
 </html>

@@ -1,50 +1,44 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;  /* Forhindrer at margin/padding påvirker bredde/ højde */
-}
-
-body{
+.container {
     display: grid;
-    grid-gap: 1em;
-    grid-template-rows: auto auto 1fr auto;
-    grid-template-columns: 1fr;  /* Ensartet layout for mobil */
-    grid-template-areas:
-        "banner"
-        "nav"
-        "main"
-        "footer";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    justify-self: center;
+    gap: 10px;
     min-height: 100vh; /* Fylder siden ud */
-    background-color: #039fd0;
 }
 
-@media (min-width: 40em) {
-    body {
-        grid-template-columns: 1fr 3fr;  /* 2 kolonner på større skærme */
-        grid-template-areas:
-            "banner banner"
-            "nav nav"
-            "main main"
-            "footer footer";
-    }
+header {
+    font-size: 25px;
+    padding: 130px;
+    background-image: url("../images/nyhavn.jpg");
+    color: white;
+    text-align: center;
 }
 
-header{
-    grid-area: banner;
-    padding-left: 1em;
+.under-header {
+    font-size: 13px;
+    color: white;
+    font-style: italic;
+    text-align: center;
 }
 
 nav {
-    background-color: #1E3A5F;  /* Mørkeblå */
+    background-color: rgb(165,42,42,0.65); /* sidste tal er gennemsigtighed*/
     color: white;
     grid-area: nav;
     padding: 1em 1em 1em;
-    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000; /*nav bar ligger over resterende elementer når scroll*/
 }
 
 nav ul {
     list-style: none;
+    color: white;
     padding: 0;
+    gap: 20px;
 }
 
 nav li {
@@ -55,19 +49,16 @@ nav li {
 nav a {
     color: white;
     text-decoration: none; /* Fjerner stegen */
+    padding: 10px 15px;
 }
 
-main {
-    grid-area: main;
-    background-color: #039fd0;
-    display: flex;
-    width: 100%;
-    height: 100%;
+nav a:hover{
+    background-color: rgb(139,0,0,0.20);
 }
 
 footer {
-    background-color: #FFFFFF;  /* Hvid */
-    color: #1E3A5F;  /* Mørkeblå */
+    background-color:rgb(165,42,42,0.65)
+    color: white;
     text-align: center;
     padding: 1em;
     grid-area: footer;
