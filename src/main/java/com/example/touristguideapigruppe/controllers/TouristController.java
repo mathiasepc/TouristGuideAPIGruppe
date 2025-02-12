@@ -33,6 +33,7 @@ public class TouristController {
         return "attraction-information";
     }
 
+    // henter add layout
     @GetMapping("insertAttraction")
     public String getAddAttraction(Model model) {
         model.addAttribute("attraction",
@@ -51,6 +52,7 @@ public class TouristController {
         return "redirect:/attractions";
     }
 
+    // henter update/delete layout
     @GetMapping("handleAttraction/{name}")
     public String getHandleAttraction(@PathVariable("name") String name, Model model) throws NotFoundException {
         if (name == null) throw new NullException();
@@ -64,7 +66,6 @@ public class TouristController {
     @PostMapping("updateAttraction")
     public String updateAttraction(@ModelAttribute("attraction") TouristAttraction newAttraction) throws NotFoundException {
         if (newAttraction == null) throw new NullException();
-
 
         TouristAttraction result = touristService.updateAttraction(newAttraction);
         if(result == null) throw new UnkownErrorException();
