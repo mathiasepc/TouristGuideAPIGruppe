@@ -28,10 +28,9 @@ public class TouristController {
         return "attractions";
     }
 
-    @RequestMapping("/{name}")
-    public ResponseEntity<TouristAttraction> getByName(@PathVariable String name) {
-        return name == null
-                ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
-                : ResponseEntity.ok(touristService.getByName(name));
+    @GetMapping("{name}")
+    public String getByName(@PathVariable String name, Model model) {
+        model.addAttribute("specific", touristService.getByName(name));
+        return "attraction-information";
     }
 }
