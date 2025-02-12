@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert attraction</title>
+</head>
+<body>
+<form th:action="@{/attractions/addAttraction}" th:method="post" th:object="${attraction}">
+    <label for="name">Name:</label>
+    <input type="text" th:field="*{name}" id="name"><br>
+    <label for="description">description:</label>
+    <textarea rows="5" cols="30" th:field="*{description}" id="description"></textarea><br>
+    <button type="submit">submit</button>
+</form>
+</body>
+</html>

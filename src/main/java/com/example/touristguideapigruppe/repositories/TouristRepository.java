@@ -28,6 +28,11 @@ public class TouristRepository {
         return null;
     }
 
+    public TouristAttraction addAttraction(TouristAttraction attraction){
+        attractions.add(attraction);
+        return attraction;
+    }
+
     private void populateAttractions(){
         attractions.add(new TouristAttraction("Tivoli","Det er en forlystelses parke på sjælland"));
         attractions.add(new TouristAttraction("Assistent kirkegården","Det er en kirkegård med mange kendte"));

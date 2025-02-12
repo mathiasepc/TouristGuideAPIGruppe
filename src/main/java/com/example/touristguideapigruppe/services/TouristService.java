@@ -21,4 +21,12 @@ public class TouristService {
     public TouristAttraction getByName(String name){
         return touristRepository.getByName(name);
     }
+
+    public TouristAttraction addAttraction(TouristAttraction attraction) {
+        TouristAttraction exist = touristRepository.getByName(attraction.getName());
+
+        return exist != null
+                ? null
+                : touristRepository.addAttraction(attraction);
+    }
 }

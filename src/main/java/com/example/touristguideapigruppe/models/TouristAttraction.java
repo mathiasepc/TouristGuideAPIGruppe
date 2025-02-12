@@ -3,6 +3,10 @@ package com.example.touristguideapigruppe.models;
 public class TouristAttraction {
     private String name,description;
 
+    public TouristAttraction(){
+
+    }
+
     public TouristAttraction(String name, String description) {
         this.name = name;
         this.description = description;
