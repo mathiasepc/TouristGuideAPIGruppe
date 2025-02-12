@@ -14,7 +14,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/attractions")
 public class TouristController {
-    private TouristService touristService;
+    private final TouristService touristService;
 
     public TouristController(TouristService touristService) {
         this.touristService = touristService;
