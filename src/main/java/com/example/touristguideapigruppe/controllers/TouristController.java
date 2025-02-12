@@ -44,4 +44,24 @@ public class TouristController {
         touristService.addAttraction(attraction);
         return "redirect:/attractions";
     }
+
+    @GetMapping("handleAttraction/{name}")
+    public String getHandleAttraction(@PathVariable("name") String name, Model model){
+        TouristAttraction result = touristService.getByName(name);
+        model.addAttribute("attraction",
+                result);
+        return "handle-attraction";
+    }
+
+    @PostMapping("updateAttraction")
+    public String updateAttraction(@ModelAttribute("attraction")TouristAttraction newAttraction) {
+        touristService.updateAttraction(newAttraction);
+        return "redirect:/attractions";
+    }
+
+    @PostMapping("delete/{name}")
+    public String deleteAttraction(@PathVariable String name) {
+        TouristAttraction result = touristService.deleteAttraction(name);
+        return "redirect:/attractions";
+    }
 }

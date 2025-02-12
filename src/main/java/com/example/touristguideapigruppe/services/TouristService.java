@@ -29,4 +29,20 @@ public class TouristService {
                 ? null
                 : touristRepository.addAttraction(attraction);
     }
+
+
+    public TouristAttraction updateAttraction(TouristAttraction newAttraction) {
+        TouristAttraction old = touristRepository.getByName(newAttraction.getName());
+
+        return old != null
+                ? touristRepository.updateAttraction(old, newAttraction)
+                : null;
+    }
+
+    public TouristAttraction deleteAttraction(String name) {
+        TouristAttraction exist = touristRepository.getByName(name);
+        return exist != null
+                ? touristRepository.deleteAttraction(exist)
+                : null;
+    }
 }

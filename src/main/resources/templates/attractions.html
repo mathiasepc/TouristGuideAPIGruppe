@@ -32,7 +32,7 @@
             <!-- Hvis attraction.name indeholder mellemrum eller specialtegn, kan det give problemer.
             Det sørger for, at navnet bliver korrekt URL-encoded. -->
             <td><a th:href="@{/attractions/{name}(name=${attraction.name})}">View</a></td>
-            <td><a th:href="@{/attractions/putAttraction/{name}(name=${attraction.name})}">Update</a></td>
+            <td><a th:href="@{/attractions/handleAttraction/{name}(name=${attraction.name})}">Update</a></td>
         </tr>
         </tbody>
     </table>

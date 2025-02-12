@@ -33,6 +33,18 @@ public class TouristRepository {
         return attraction;
     }
 
+    public TouristAttraction updateAttraction(TouristAttraction oldAttraction, TouristAttraction newAttraction){
+        attractions.remove(oldAttraction);
+        attractions.add(newAttraction);
+
+        return newAttraction;
+    }
+
+    public TouristAttraction deleteAttraction(TouristAttraction attraction){
+        attractions.remove(attraction);
+        return attraction;
+    }
+
     private void populateAttractions(){
         attractions.add(new TouristAttraction("Tivoli","Det er en forlystelses parke på sjælland"));
         attractions.add(new TouristAttraction("Assistent kirkegården","Det er en kirkegård med mange kendte"));
