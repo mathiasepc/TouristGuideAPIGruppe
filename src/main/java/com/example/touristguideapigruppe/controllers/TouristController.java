@@ -20,6 +20,7 @@ public class TouristController {
         this.touristService = touristService;
     }
 
+    // hent "index" til attraction
     @GetMapping("")
     public String getAttractions(Model model) {
         List<TouristAttraction> attractions = touristService.getAttractions();
@@ -27,6 +28,7 @@ public class TouristController {
         return "attractions";
     }
 
+    // hente specifik
     @GetMapping("{name}")
     public String getByName(@PathVariable String name, Model model) throws NotFoundException {
         model.addAttribute("specific", touristService.getByName(name));
@@ -41,6 +43,7 @@ public class TouristController {
         return "add-attraction";
     }
 
+    // tilføj metoden
     @PostMapping("addAttraction")
     public String addAttraction(@ModelAttribute("attraction") TouristAttraction attraction) {
         if (attraction == null) throw new NullException();
@@ -63,17 +66,19 @@ public class TouristController {
         return "handle-attraction";
     }
 
+    // opdater metoden
     @PostMapping("updateAttraction")
     public String updateAttraction(@ModelAttribute("attraction") TouristAttraction newAttraction) throws NotFoundException {
         if (newAttraction == null) throw new NullException();
 
         TouristAttraction result = touristService.updateAttraction(newAttraction);
-        if(result == null) throw new UnkownErrorException();
+        if (result == null) throw new UnkownErrorException();
 
         // laver en 302 response sådan, at ikke kan poste det samme igen.
         return "redirect:/attractions";
     }
 
+    // delete metoden
     @PostMapping("delete/{name}")
     public String deleteAttraction(@PathVariable String name) throws NotFoundException {
         if (name == null) throw new NullException();
