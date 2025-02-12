@@ -1,6 +1,7 @@
 package com.example.touristguideapigruppe.services;
 
 import com.example.touristguideapigruppe.exceptions.NotFoundException;
+import com.example.touristguideapigruppe.exceptions.ValueExistException;
 import com.example.touristguideapigruppe.models.TouristAttraction;
 import com.example.touristguideapigruppe.repositories.TouristRepository;
 import org.springframework.stereotype.Service;
@@ -21,32 +22,31 @@ public class TouristService {
 
     public TouristAttraction getByName(String name) throws NotFoundException {
         TouristAttraction result = touristRepository.getByName(name);
-        if (result == null) throw new NotFoundException(name);
+        if(result == null) throw new NotFoundException(name);
 
         return result;
     }
 
     public TouristAttraction addAttraction(TouristAttraction attraction) {
         TouristAttraction exist = touristRepository.getByName(attraction.getName());
+        if(exist != null) throw new ValueExistException(exist.getName());
 
-        return exist != null
-                ? null
-                : touristRepository.addAttraction(attraction);
+        return touristRepository.addAttraction(attraction);
     }
 
-
-    public TouristAttraction updateAttraction(TouristAttraction newAttraction) {
+    public TouristAttraction updateAttraction(TouristAttraction newAttraction) throws NotFoundException {
         TouristAttraction old = touristRepository.getByName(newAttraction.getName());
 
-        return old != null
-                ? touristRepository.updateAttraction(old, newAttraction)
-                : null;
+        if(old == null) throw new NotFoundException(newAttraction.getName());
+
+        return touristRepository.updateAttraction(old, newAttraction);
     }
 
-    public TouristAttraction deleteAttraction(String name) {
+    public TouristAttraction deleteAttraction(String name) throws NotFoundException {
         TouristAttraction exist = touristRepository.getByName(name);
-        return exist != null
-                ? touristRepository.deleteAttraction(exist)
-                : null;
+
+        if(exist == null) throw new NotFoundException(name);
+
+        return touristRepository.deleteAttraction(exist);
     }
 }
