@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/General.css}">
+    <link rel="stylesheet" th:href="@{/css/Attraction.css}">
+</head>
+<body>
+<header>
+    <h1><a th:href="@{/}">Attractions</a></h1>
+</header>
+<!-- th:replaces the current tag with the tag defining the fragment -->
+<!-- :: site-navbar betyder "brug kun dette fragment"-->
+<nav th:replace="fragments/navbar :: site-navbar"></nav>
+<main>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>View attraction</th>
+            <th>Update</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="attraction : ${attractions}">
+            <td th:text="${attraction.name}"/>
+            <td th:text="${attraction.description}"/>
+            <!-- Hvis attraction.name indeholder mellemrum eller specialtegn, kan det give problemer.
+            Det sørger for, at navnet bliver korrekt URL-encoded. -->
+            <td><a th:href="@{/attractions/{name}(name=${attraction.name})}">View</a></td>
+            <td><a th:href="@{/attractions/putAttraction/{name}(name=${attraction.name})}">Update</a></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+<!-- th:replaces the current tag with the tag defining the fragment -->
+<!-- :: site-navbar betyder "brug kun dette fragment"-->
+<footer th:replace="fragments/footer :: site-footer"></footer>
+</body>
+</html>
+
+
