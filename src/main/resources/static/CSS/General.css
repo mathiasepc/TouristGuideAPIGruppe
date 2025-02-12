@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  /* Forhindrer at margin/padding påvirker bredde/ højde */
+}
+
+body{
+    display: grid;
+    grid-gap: 1em;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-columns: 1fr;  /* Ensartet layout for mobil */
+    grid-template-areas:
+        "banner"
+        "nav"
+        "main"
+        "footer";
+    min-height: 100vh; /* Fylder siden ud */
+    background-color: #039fd0;
+}
+
+@media (min-width: 40em) {
+    body {
+        grid-template-columns: 1fr 3fr;  /* 2 kolonner på større skærme */
+        grid-template-areas:
+            "banner banner"
+            "nav nav"
+            "main main"
+            "footer footer";
+    }
+}
+
+header{
+    grid-area: banner;
+    padding-left: 1em;
+}
+
+nav {
+    background-color: #1E3A5F;  /* Mørkeblå */
+    color: white;
+    grid-area: nav;
+    padding: 1em 1em 1em;
+    width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin-right: 1em;
+}
+
+nav a {
+    color: white;
+    text-decoration: none; /* Fjerner stegen */
+}
+
+main {
+    grid-area: main;
+    background-color: #039fd0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+footer {
+    background-color: #FFFFFF;  /* Hvid */
+    color: #1E3A5F;  /* Mørkeblå */
+    text-align: center;
+    padding: 1em;
+    grid-area: footer;
+    width: 100%;
+}
