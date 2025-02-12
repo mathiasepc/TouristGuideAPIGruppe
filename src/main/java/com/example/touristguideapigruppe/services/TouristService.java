@@ -1,5 +1,6 @@
 package com.example.touristguideapigruppe.services;
 
+import com.example.touristguideapigruppe.exceptions.NotFoundException;
 import com.example.touristguideapigruppe.models.TouristAttraction;
 import com.example.touristguideapigruppe.repositories.TouristRepository;
 import org.springframework.stereotype.Service;
@@ -14,12 +15,15 @@ public class TouristService {
         this.touristRepository = touristRepository;
     }
 
-    public List<TouristAttraction> getAttractions(){
+    public List<TouristAttraction> getAttractions() {
         return touristRepository.getAttractions();
     }
 
-    public TouristAttraction getByName(String name){
-        return touristRepository.getByName(name);
+    public TouristAttraction getByName(String name) throws NotFoundException {
+        TouristAttraction result = touristRepository.getByName(name);
+        if (result == null) throw new NotFoundException(name);
+
+        return result;
     }
 
     public TouristAttraction addAttraction(TouristAttraction attraction) {

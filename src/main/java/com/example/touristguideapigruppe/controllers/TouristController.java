@@ -1,5 +1,7 @@
 package com.example.touristguideapigruppe.controllers;
 
+import com.example.touristguideapigruppe.exceptions.NotFoundException;
+import com.example.touristguideapigruppe.exceptions.NullException;
 import com.example.touristguideapigruppe.models.TouristAttraction;
 import com.example.touristguideapigruppe.services.TouristService;
 import org.springframework.http.HttpStatus;
@@ -27,7 +29,7 @@ public class TouristController {
     }
 
     @GetMapping("{name}")
-    public String getByName(@PathVariable String name, Model model) {
+    public String getByName(@PathVariable String name, Model model) throws NotFoundException {
         model.addAttribute("specific", touristService.getByName(name));
         return "attraction-information";
     }
@@ -46,7 +48,7 @@ public class TouristController {
     }
 
     @GetMapping("handleAttraction/{name}")
-    public String getHandleAttraction(@PathVariable("name") String name, Model model){
+    public String getHandleAttraction(@PathVariable("name") String name, Model model) throws NotFoundException {
         TouristAttraction result = touristService.getByName(name);
         model.addAttribute("attraction",
                 result);
