@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/attractions")
+@RequestMapping("attractions")
 public class TouristController {
     private final TouristService touristService;
 
