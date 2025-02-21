@@ -36,7 +36,7 @@ public class TouristController {
     }
 
     // henter add layout
-    @GetMapping("insertAttraction")
+    @GetMapping("add")
     public String getAddAttraction(Model model) {
         model.addAttribute("attraction",
                 new TouristAttraction());
@@ -44,8 +44,8 @@ public class TouristController {
     }
 
     // tilføj metoden
-    @PostMapping("addAttraction")
-    public String addAttraction(@ModelAttribute("attraction") TouristAttraction attraction) {
+    @PostMapping("save")
+    public String saveAttraction(@ModelAttribute("attraction") TouristAttraction attraction) {
         if (attraction == null) throw new NullException();
 
         TouristAttraction result = touristService.addAttraction(attraction);
@@ -56,18 +56,18 @@ public class TouristController {
     }
 
     // henter update/delete layout
-    @GetMapping("handleAttraction/{name}")
-    public String getHandleAttraction(@PathVariable("name") String name, Model model) throws NotFoundException {
+    @GetMapping("{name}/edit")
+    public String editAttraction(@PathVariable("name") String name, Model model) throws NotFoundException {
         if (name == null) throw new NullException();
 
         TouristAttraction result = touristService.getByName(name);
         model.addAttribute("attraction",
                 result);
-        return "handle-attraction";
+        return "edit-attraction";
     }
 
     // opdater metoden
-    @PostMapping("updateAttraction")
+    @PostMapping("update")
     public String updateAttraction(@ModelAttribute("attraction") TouristAttraction newAttraction) throws NotFoundException {
         if (newAttraction == null) throw new NullException();
 

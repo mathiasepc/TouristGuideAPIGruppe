@@ -15,7 +15,7 @@
 
 <nav th:replace="fragments/navbar :: site-navbar"></nav>
 
-<form th:action="@{/attractions/addAttraction}" th:method="post" th:object="${attraction}">
+<form th:action="@{/attractions/save}" th:method="post" th:object="${attraction}">
     <label for="name">Name:</label>
     <input type="text" th:field="*{name}" id="name"><br>
     <label for="description">description:</label>

@@ -16,7 +16,7 @@
 <nav th:replace="fragments/navbar :: site-navbar"></nav>
 
 <div class="button-container">
-    <form th:action="@{/attractions/updateAttraction}" th:method="post" th:object="${attraction}">
+    <form th:action="@{/attractions/update}" th:method="post" th:object="${attraction}">
         <label for="name">Name:</label>
         <input readonly type="text" th:field="*{name}" th:value="*{name}" id="name"><br>
         <label for="description">description:</label>
