@@ -19,10 +19,17 @@
     <form th:action="@{/attractions/updateAttraction}" th:method="post" th:object="${attraction}">
         <label for="name">Name:</label>
         <input readonly type="text" th:field="*{name}" th:value="*{name}" id="name"><br>
-        <label for="description">description:</label>
+        <label for="description">Description:</label>
         <textarea rows="5" cols="30" th:field="*{description}" th:value="*{name}" id="description"></textarea><br>
+        <label for="city">City:</label>
+        <input type="text" th:field="*{city}" id="city" required><br>
+        <label>Tags:</label>
+        <div th:each="tag : ${availableTags}">
+            <!-- th:checked, tjekker om et tag allerede er tilknyttet den en attraktion -->
+            <input type="checkbox" th:value="${tag}" th:field="*{tags}" th:id="${'tag-' + tag}" th:checked="${attraction.tags != null and attraction.tags.contains(tag)}" />
+            <label th:for="${'tag-' + tag}" th:text="${tag}"></label><br>
+        </div>
         <button type="submit">Update</button><br>
-
         <input class="fakeButton" th:formaction="@{/attractions/delete/{name}(name=${attraction.name})}" type="submit" value="Delete"/>
     </form>
 
