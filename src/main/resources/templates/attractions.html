@@ -21,6 +21,8 @@
         <tr>
             <th>Name</th>
             <th>Description</th>
+            <th>City</th>
+            <th>Tags</th>
             <th>View attraction</th>
             <th>Update</th>
         </tr>
@@ -29,6 +31,8 @@
         <tr th:each="attraction : ${attractions}">
             <td th:text="${attraction.name}"/>
             <td th:text="${attraction.description}"/>
+            <td th:text="${attraction.city}"/>
+            <td><a th:href="@{/attractions/{name}/tags(name=${attraction.name})}">Tags</a></td>
             <!-- Hvis attraction.name indeholder mellemrum eller specialtegn, kan det give problemer.
             Det sørger for, at navnet bliver korrekt URL-encoded. -->
             <td><a th:href="@{/attractions/{name}(name=${attraction.name})}">View</a></td>
