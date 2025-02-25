@@ -16,11 +16,11 @@
 <nav th:replace="fragments/navbar :: site-navbar"></nav>
 
 <form th:action="@{/attractions/addAttraction}" th:method="post" th:object="${attraction}">
-    <label for="name">Name:</label>
+    <label for="name">Navn:</label>
     <input type="text" th:field="*{name}" id="name" required><br>
-    <label for="description">description:</label>
+    <label for="description">Beskrivelse:</label>
     <textarea rows="5" cols="30" th:field="*{description}" id="description" required></textarea><br>
-    <label for="city">City:</label>
+    <label for="city">By:</label>
     <input type="text" th:field="*{city}" id="city" required><br>
     <label>Tags:</label>
     <div th:each="tag : ${availableTags}">
@@ -29,7 +29,7 @@
     </div>
     <!-- chechbox'en id gør at der bliver lavet et unikt id for de forskellige tags. Viser string concatenation i th.
       f.eks. hvis tag er gratis bliver id'et: tag-gratis -->
-    <button type="submit">submit</button>
+    <button type="submit">Tilføj</button>
 </form>
 
 <footer th:replace="fragments/footer :: site-footer"></footer>

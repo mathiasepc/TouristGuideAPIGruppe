@@ -19,12 +19,12 @@
     <table>
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>City</th>
+            <th>Navn</th>
+            <th>Beskrivelse</th>
+            <th>By</th>
             <th>Tags</th>
-            <th>View attraction</th>
-            <th>Update</th>
+            <th>Se attraktion</th>
+            <th>Opdater</th>
         </tr>
         </thead>
         <tbody>
@@ -35,8 +35,8 @@
             <td><a th:href="@{/attractions/{name}/tags(name=${attraction.name})}">Tags</a></td>
             <!-- Hvis attraction.name indeholder mellemrum eller specialtegn, kan det give problemer.
             Det sørger for, at navnet bliver korrekt URL-encoded. -->
-            <td><a th:href="@{/attractions/{name}(name=${attraction.name})}">View</a></td>
-            <td><a th:href="@{/attractions/handleAttraction/{name}(name=${attraction.name})}">Update</a></td>
+            <td><a th:href="@{/attractions/{name}(name=${attraction.name})}">Se attraktion</a></td>
+            <td><a th:href="@{/attractions/handleAttraction/{name}(name=${attraction.name})}">Opdater</a></td>
         </tr>
         </tbody>
     </table>
