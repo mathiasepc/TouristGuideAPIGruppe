@@ -1,9 +1,15 @@
+main{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
 table {
-    width: 100%; /* Gør tabellen responsiv */
+    width: 85%; /* Gør tabellen responsiv */
     border-collapse: collapse; /* Fjerner dobbeltkantede border */
-    background-color: #0028ff; /* Baggrundsfarve */
+    background-color: rgb(128,128,128,0.15) ; /* Baggrundsfarve */
     border-radius: 10px; /* Rundede hjørner */
     overflow: hidden; /* Sikrer, at indhold ikke flyder ud */
+    justify-self: center;
 }
 
 th, td {
@@ -14,17 +20,17 @@ th, td {
 }
 
 th {
-    background-color: #1E3A5F; /* Mørkeblå baggrund til overskrifter */
+    background-color: rgb(165,42,42,0.65); /* Mørkeblå baggrund til overskrifter */
     color: white;
     font-weight: bold;
 }
 
-tr:nth-child(even) {
-    background-color: #01bcf8; /* Giver hver anden række en mørkere farve */
+td{
+    color: black;
 }
 
 tr:hover {
-    background-color: #09f1dd; /* Effekt ved hover */
+    background-color: rgb(165,42,42,0.65); /* Effekt ved hover */
 }
 
 a {
