@@ -10,7 +10,9 @@
 </head>
 <body>
 <header>
-    <h1><a th:href="@{/}">Tilføj attraction</a></h1>
+    <div class="box">
+    <h1><a th:href="@{/}">Tilføj attraktion</a></h1>
+    </div>
 </header>
 
 <nav th:replace="fragments/navbar :: site-navbar"></nav>
@@ -21,6 +23,21 @@
     <label for="description">description:</label>
     <textarea rows="5" cols="30" th:field="*{description}" id="description"></textarea><br>
     <button type="submit">submit</button>
+<form th:action="@{/attractions/addAttraction}" th:method="post" th:object="${attraction}">
+    <label for="name">Navn:</label>
+    <input type="text" th:field="*{name}" id="name" required><br>
+    <label for="description">Beskrivelse:</label>
+    <textarea rows="5" cols="30" th:field="*{description}" id="description" required></textarea><br>
+    <label for="city">By:</label>
+    <input type="text" th:field="*{city}" id="city" required><br>
+    <label>Tags:</label>
+    <div th:each="tag : ${availableTags}">
+        <input type="checkbox" th:value="${tag}" th:field="*{tags}" id="${'tag-' + tag}"/>
+        <label th:for="${'tag-' + tag}" th:text="${tag.displayName}"></label><br>
+    </div>
+    <!-- chechbox'en id gør at der bliver lavet et unikt id for de forskellige tags. Viser string concatenation i th.
+      f.eks. hvis tag er gratis bliver id'et: tag-gratis -->
+    <button type="submit">Tilføj</button>
 </form>
 
 <footer th:replace="fragments/footer :: site-footer"></footer>

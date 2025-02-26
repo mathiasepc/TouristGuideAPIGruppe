@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <title>Error</title>
-</head>
-<body>
-<h1>Der skete en fejl</h1>
-<p th:text="${error}"></p> <!-- Vis fejlinformationen -->
-</body>
-</html>
+    <!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head>
+        <title>Error</title>
+        <link rel="stylesheet" th:href="@{/css/error.css}">
+    </head>
+    <body>
+    <main>
+        <h1>Der skete en fejl</h1><br>
+        <label for="error">Fejl:</label>
+        <p id="error" th:text="${error}"></p>
+        <a th:href="@{/}">Tilbage</a>
+    </main>
+    </body>
+    </html>
