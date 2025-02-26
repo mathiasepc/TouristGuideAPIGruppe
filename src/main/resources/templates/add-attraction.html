@@ -27,7 +27,7 @@
     <label>Tags:</label>
     <div th:each="tag : ${availableTags}">
         <input type="checkbox" th:value="${tag}" th:field="*{tags}" id="${'tag-' + tag}"/>
-        <label th:for="${'tag-' + tag}" th:text="${tag}"></label><br>
+        <label th:for="${'tag-' + tag}" th:text="${tag.displayName}"></label><br>
     </div>
     <!-- chechbox'en id gør at der bliver lavet et unikt id for de forskellige tags. Viser string concatenation i th.
       f.eks. hvis tag er gratis bliver id'et: tag-gratis -->
