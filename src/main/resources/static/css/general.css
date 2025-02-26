@@ -22,6 +22,11 @@ header {
     background-color: rgb(165,42,42,0.35);
 }
 
+.box a{
+    color: white;
+    text-decoration: none;
+}
+
 .under-header {
     font-size: 18px;
     color: white;
