@@ -73,11 +73,11 @@ public class TouristController {
         List<Tags> availableTags = Arrays.asList(Tags.values());
         model.addAttribute("availableTags", availableTags);
 
-        return "handle-attraction";
+        return "edit-attraction";
     }
 
     // opdater metoden
-    @PostMapping("updateAttraction")
+    @PostMapping("update")
     public String updateAttraction(@ModelAttribute("attraction") TouristAttraction newAttraction, @RequestParam ("tags") List<Tags> tags) throws NotFoundException {
         if (newAttraction == null) throw new NullException();
 
