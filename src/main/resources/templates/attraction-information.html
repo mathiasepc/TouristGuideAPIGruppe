@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>Information about attraction</title>
     <link rel="stylesheet" th:href="@{/css/general.css}">
+    <link rel="stylesheet" th:href="@{/css/tags.css}">
 </head>
 <body>
 
@@ -15,10 +16,16 @@
 <!-- th:replaces the current tag with the tag defining the fragment -->
 <!-- :: site-navbar betyder "brug kun dette fragment"-->
 <nav th:replace="fragments/navbar :: site-navbar"></nav>
-<main>
-    <p>Her skal være information om attraction</p>
-    <p th:text="${specific.name}"/>
-</main>
+
+<div class="container">
+    <main>
+        <h1 th:text="${specific.name}"></h1>
+        <p th:text="${specific.description}"></p>
+        <h3>Tags:</h3>
+        <p th:each="tag : ${specific.tags}" th:text="${tag}"></p>
+    </main>
+</div>
+
 <!-- th:replaces the current tag with the tag defining the fragment -->
 <!-- :: site-navbar betyder "brug kun dette fragment"-->
 <footer th:replace="fragments/footer :: site-footer"></footer>
