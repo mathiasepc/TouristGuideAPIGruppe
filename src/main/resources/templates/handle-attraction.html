@@ -27,7 +27,7 @@
         <div th:each="tag : ${availableTags}">
             <!-- th:checked, tjekker om et tag allerede er tilknyttet den en attraktion -->
             <input type="checkbox" th:value="${tag}" th:field="*{tags}" th:id="${'tag-' + tag}" th:checked="${attraction.tags != null and attraction.tags.contains(tag)}" />
-            <label th:for="${'tag-' + tag}" th:text="${tag}"></label><br>
+            <label th:for="${'tag-' + tag}" th:text="${tag.displayName}"></label><br>
         </div>
         <button type="submit">Opdater</button><br>
         <input class="fakeButton" th:formaction="@{/attractions/delete/{name}(name=${attraction.name})}" type="submit" value="Delete"/>
