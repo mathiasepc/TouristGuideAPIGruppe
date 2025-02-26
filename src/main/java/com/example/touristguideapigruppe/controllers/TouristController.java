@@ -54,7 +54,7 @@ public class TouristController {
     public String saveAttraction(@ModelAttribute("attraction") TouristAttraction attraction) {
         if (attraction == null) throw new NullException();
 
-        attraction.setTags(tags);
+
         TouristAttraction result = touristService.addAttraction(attraction);
         if (result == null) throw new UnkownErrorException();
 
@@ -114,6 +114,13 @@ public class TouristController {
 
         model.addAttribute("specific", attraction);
         return "attraction-tags";
+
+        // Kontakt os
+    }
+    @GetMapping("kontakt-os")
+    public String getContactPage(Model model) {
+        model.addAttribute("pageTitle", "Kontakt os");
+        return "contact";
     }
 
 }
