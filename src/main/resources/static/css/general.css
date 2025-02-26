@@ -16,8 +16,9 @@ header {
 }
 
 .box{
+    display: inline-block;
     padding: 20px;
-    width: 100px;
+    width: auto;
     background-color: rgb(165,42,42,0.35);
 }
 
