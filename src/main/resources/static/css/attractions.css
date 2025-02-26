@@ -2,13 +2,18 @@ b{
     color: white;
 }
 
+main{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
 table {
-    width: 100%; /* Gør tabellen responsiv */
+    width: 85%; /* Gør tabellen responsiv */
     border-collapse: collapse; /* Fjerner dobbeltkantede border */
     background-color: rgb(128,128,128,0.15) ; /* Baggrundsfarve */
     border-radius: 10px; /* Rundede hjørner */
     overflow: hidden; /* Sikrer, at indhold ikke flyder ud */
-    margin: auto;
+    justify-self: center;
 }
 
 th, td {
