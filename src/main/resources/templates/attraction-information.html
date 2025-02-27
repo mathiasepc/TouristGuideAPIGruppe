@@ -11,7 +11,9 @@
 <body>
 
 <header>
-    <h1><a th:href="@{/}">Information om attraction</a></h1>
+    <div class="box">
+        <h1><a th:href="@{/}">Information om attraction</a></h1>
+    </div>
 </header>
 <!-- th:replaces the current tag with the tag defining the fragment -->
 <!-- :: site-navbar betyder "brug kun dette fragment"-->
@@ -20,9 +22,10 @@
 <div class="container">
     <main>
         <h1 th:text="${specific.name}"></h1>
-        <p th:text="${specific.description}"></p>
-        <h3>Tags:</h3>
-        <p th:each="tag : ${specific.tags}" th:text="${tag}"></p>
+        <h4>Beskrivelse:</h4>
+        <p id="description" th:text="${specific.description}"></p>
+        <h4>Tags:</h4>
+        <p th:each="tag : ${specific.tags}" th:text="${tag.displayName}"></p>
     </main>
 </div>
 
