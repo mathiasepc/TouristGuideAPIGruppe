@@ -2,6 +2,7 @@ package com.example.touristguideapigruppe.services;
 
 import com.example.touristguideapigruppe.exceptions.NotFoundException;
 import com.example.touristguideapigruppe.exceptions.ValueExistException;
+import com.example.touristguideapigruppe.models.Tags;
 import com.example.touristguideapigruppe.models.TouristAttraction;
 import com.example.touristguideapigruppe.repositories.TouristRepository;
 import org.springframework.stereotype.Service;
@@ -46,5 +47,9 @@ public class TouristService {
         if (exist == null) throw new NotFoundException(name);
 
         return touristRepository.deleteAttraction(exist);
+    }
+
+    public List<Tags> getTagsByName(String name){
+        return touristRepository.getTagsByName(name);
     }
 }

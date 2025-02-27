@@ -16,13 +16,20 @@
 <nav th:replace="fragments/navbar :: site-navbar"></nav>
 
 <div class="button-container">
-    <form th:action="@{/attractions/updateAttraction}" th:method="post" th:object="${attraction}">
+    <form th:action="@{/attractions/update}" th:method="post" th:object="${attraction}">
         <label for="name">Name:</label>
         <input readonly type="text" th:field="*{name}" th:value="*{name}" id="name"><br>
-        <label for="description">description:</label>
+        <label for="description">Beskrivelse:</label>
         <textarea rows="5" cols="30" th:field="*{description}" th:value="*{name}" id="description"></textarea><br>
-        <button type="submit">Update</button><br>
-
+        <label for="city">By:</label>
+        <input type="text" th:field="*{city}" id="city" required><br>
+        <label>Tags:</label>
+        <div th:each="tag : ${availableTags}">
+            <!-- th:checked, tjekker om et tag allerede er tilknyttet den en attraktion -->
+            <input type="checkbox" th:value="${tag}" th:field="*{tags}" th:id="${'tag-' + tag}" th:checked="${attraction.tags != null and attraction.tags.contains(tag)}" />
+            <label th:for="${'tag-' + tag}" th:text="${tag.displayName}"></label><br>
+        </div>
+        <button type="submit">Opdater</button><br>
         <input class="fakeButton" th:formaction="@{/attractions/delete/{name}(name=${attraction.name})}" type="submit" value="Delete"/>
     </form>
 
