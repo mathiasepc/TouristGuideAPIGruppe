@@ -6,17 +6,23 @@
     <link rel="stylesheet" th:href="@{/css/general.css}">
     <link rel="stylesheet" th:href="@{/css/about.css}">
 </head>
+
+<header>
+    <div class="box">
+        <h1><a th:href="@{/}">Hvem er vi?</a></h1>
+    </div>
+</header>
+
 <body>
 
 <!-- Navbar -->
-<nav th:replace="fragments/header :: site-header"></nav>
 <nav th:replace="fragments/navbar :: site-navbar"></nav>
 
 <!-- Main content -->
-<main class="container">
-    <header>
-        <h1>Hvem er vi?</h1>
-    </header>
+<main class="description-box">
+    <h1>
+        <h2>Hvem er vi?</h2>
+    </h1>
 
     <section class="about-text">
         <p>
