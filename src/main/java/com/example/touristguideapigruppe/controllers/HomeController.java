@@ -12,6 +12,10 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("/about")
+    public String aboutUs() {
+        return "aboutUs"; // Skal matche HTML-filen i templates-mappen
+    }
     @GetMapping("kontakt-os")
     public String getContactPage(Model model) {
         model.addAttribute("pageTitle", "Kontakt os");
