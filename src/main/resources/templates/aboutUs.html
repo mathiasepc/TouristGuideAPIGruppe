@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="da" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hvem er vi?</title>
+    <link rel="stylesheet" th:href="@{/css/general.css}">
+    <link rel="stylesheet" th:href="@{/css/about.css}">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav th:replace="fragments/header :: site-header"></nav>
+<nav th:replace="fragments/navbar :: site-navbar"></nav>
+
+<!-- Main content -->
+<main class="container">
+    <header>
+        <h1>Hvem er vi?</h1>
+    </header>
+
+    <section class="about-text">
+        <p>
+            Vi er din guide til Danmarks bedste attraktioner. Fra historiske slotte og museer
+            til naturskønne parker og forlystelsesparker. Vi hjælper turister med at opdage
+            de skjulte perler og de mest populære steder i Danmark.
+        </p>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer th:replace="fragments/footer :: site-footer"></footer>
+
+</body>
+</html>

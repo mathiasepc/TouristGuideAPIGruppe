@@ -7,8 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 
     @GetMapping("/")
-    public String index(){
+    public String index() {
         return "index";
     }
 
+    @GetMapping("/about")
+    public String aboutUs() {
+        return "aboutUs"; // Skal matche HTML-filen i templates-mappen
+    }
 }
