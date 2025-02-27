@@ -117,10 +117,6 @@ public class TouristController {
 
         // Kontakt os
     }
-    @GetMapping("kontakt-os")
-    public String getContactPage(Model model) {
-        model.addAttribute("pageTitle", "Kontakt os");
-        return "contact";
-    }
+
 
 }
