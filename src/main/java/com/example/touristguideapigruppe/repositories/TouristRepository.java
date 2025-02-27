@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public class TouristRepository {
-    List<TouristAttraction> attractions;
+    private final List<TouristAttraction> attractions;
 
     public TouristRepository() {
         this.attractions = new ArrayList<>();

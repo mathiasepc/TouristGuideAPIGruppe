@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -39,7 +38,7 @@ public class TouristController {
     }
 
     // henter add layout
-    @GetMapping("insertAttraction")
+    @GetMapping("add")
     public String getAddAttraction(Model model) {
         List<Tags> availableTags = Arrays.asList(Tags.values());
         model.addAttribute("availableTags", availableTags);
@@ -50,11 +49,11 @@ public class TouristController {
     }
 
     // tilføj metoden
-    @PostMapping("addAttraction")
-    public String addAttraction(@ModelAttribute("attraction") TouristAttraction attraction, @RequestParam("tags") List<Tags> tags) {
+    @PostMapping("save")
+    public String saveAttraction(@ModelAttribute("attraction") TouristAttraction attraction) {
         if (attraction == null) throw new NullException();
 
-        attraction.setTags(tags);
+
         TouristAttraction result = touristService.addAttraction(attraction);
         if (result == null) throw new UnkownErrorException();
 
@@ -63,8 +62,8 @@ public class TouristController {
     }
 
     // henter update/delete layout
-    @GetMapping("handleAttraction/{name}")
-    public String getHandleAttraction(@PathVariable("name") String name, Model model) throws NotFoundException {
+    @GetMapping("{name}/edit")
+    public String editAttraction(@PathVariable("name") String name, Model model) throws NotFoundException {
         if (name == null) throw new NullException();
 
         TouristAttraction result = touristService.getByName(name);
@@ -73,11 +72,11 @@ public class TouristController {
         List<Tags> availableTags = Arrays.asList(Tags.values());
         model.addAttribute("availableTags", availableTags);
 
-        return "handle-attraction";
+        return "edit-attraction";
     }
 
     // opdater metoden
-    @PostMapping("updateAttraction")
+    @PostMapping("update")
     public String updateAttraction(@ModelAttribute("attraction") TouristAttraction newAttraction, @RequestParam ("tags") List<Tags> tags) throws NotFoundException {
         if (newAttraction == null) throw new NullException();
 
@@ -114,6 +113,9 @@ public class TouristController {
 
         model.addAttribute("specific", attraction);
         return "attraction-tags";
+
+        // Kontakt os
     }
+
 
 }
