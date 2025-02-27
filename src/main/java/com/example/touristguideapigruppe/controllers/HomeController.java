@@ -11,6 +11,11 @@ public class HomeController {
         return "index";
     }
 
+
+
+
+
+
     @GetMapping("/about")
     public String aboutUs() {
         return "aboutUs"; // Skal matche HTML-filen i templates-mappen
