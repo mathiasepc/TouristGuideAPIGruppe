@@ -14,7 +14,7 @@ public class HomeController {
 
     @GetMapping("/about")
     public String aboutUs() {
-        return "aboutUs"; // Skal matche HTML-filen i templates-mappen
+        return "about-us"; // Skal matche HTML-filen i templates-mappen
     }
     @GetMapping("kontakt-os")
     public String getContactPage(Model model) {
