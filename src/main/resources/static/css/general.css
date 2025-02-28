@@ -4,7 +4,6 @@
     grid-template-rows: auto 1fr auto auto;
     justify-self: center;
     gap: 20px;
-    min-height: 100vh; /* Fylder siden ud */
 }
 
 header {

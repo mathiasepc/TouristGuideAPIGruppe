@@ -2,33 +2,29 @@
 <html lang="da"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title th:text="${pageTitle}">Kontakt os</title>
-  <link rel="stylesheet" th:href="@{/css/general.css}">
-  <link rel="stylesheet" th:href="@{/css/tags.css}">
+    <meta charset="UTF-8">
+    <title th:text="${pageTitle}">Kontakt os</title>
+    <link rel="stylesheet" th:href="@{/css/general.css}">
+    <link rel="stylesheet" th:href="@{/css/tags.css}">
 </head>
 <body>
-
 <header>
-  <div class="box">
-  <h1><a th:href="@{/}">Kontakt os</a></h1>
+    <div class="box">
+        <h1><a th:href="@{/}">Kontakt os</a></h1>
     </div>
 </header>
 
 <nav th:replace="fragments/navbar :: site-navbar"></nav>
 
 <div class="container">
+    <main>
+        <h2 th:text="${pageTitle}"></h2>
+        <p>Har du spørgsmål? Du kan kontakte os via e-mail eller telefon.</p>
+        <p>Email: <a href="mailto:kontakt@touristguide.dk">kontakt@touristguide.dk</a></p>
+        <p>Telefon: <a href="tel:+4512345678">+45 1234 5678</a></p>
+    </main>
 
-
-<main>
-  <h2 th:text="${pageTitle}"></h2>
-  <p>Har du spørgsmål? Du kan kontakte os via e-mail eller telefon.</p>
-  <p>Email: <a href="mailto:kontakt@touristguide.dk">kontakt@touristguide.dk</a></p>
-  <p>Telefon: <a href="tel:+4512345678">+45 1234 5678</a></p>
-</main>
+    <footer th:replace="fragments/footer :: site-footer"></footer>
 </div>
-
-<footer th:replace="fragments/footer :: site-footer"></footer>
-
 </body>
 </html>

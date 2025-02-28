@@ -113,8 +113,6 @@ public class TouristController {
 
         model.addAttribute("specific", attraction);
         return "attraction-tags";
-
-        // Kontakt os
     }
 
 

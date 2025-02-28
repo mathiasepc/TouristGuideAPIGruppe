@@ -7,9 +7,13 @@
     <link rel="stylesheet" th:href="@{/css/general.css}">
     <link rel="stylesheet" th:href="@{/css/tags.css}">
 </head>
+
 <header>
-    <h1><a th:href="@{/}">Tags</a></h1>
+    <div class="box">
+        <h1><a th:href="@{/}">Tags</a></h1>
+    </div>
 </header>
+
 <nav th:replace="fragments/navbar :: site-navbar"></nav>
 
 <div class="container">
