@@ -46,17 +46,6 @@ public class TouristRepository {
         return attraction;
     }
 
-    public List<Tags> getTagsByName(String name){
-
-        for(TouristAttraction touristAttraction : attractions){
-            if(touristAttraction.getName().equalsIgnoreCase(name)){
-           return touristAttraction.getTags();
-            }
-        }
-
-        return null;
-    }
-
     private void populateAttractions(){
         attractions.add(new TouristAttraction("Tivoli","Det er en forlystelsespark på sjælland", "København", List.of(Tags.BØRNEVENLIG, Tags.UNDERHOLDNING, Tags.RESTAURANT)));
         attractions.add(new TouristAttraction("Assistent kirkegården","Det er en kirkegård med mange kendte", "Nørrebro", List.of(Tags.NATUR, Tags.GRATIS)));

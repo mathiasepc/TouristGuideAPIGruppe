@@ -49,7 +49,5 @@ public class TouristService {
         return touristRepository.deleteAttraction(exist);
     }
 
-    public List<Tags> getTagsByName(String name){
-        return touristRepository.getTagsByName(name);
-    }
+
 }
