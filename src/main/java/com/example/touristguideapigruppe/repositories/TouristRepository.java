@@ -49,7 +49,7 @@ public class TouristRepository {
     private void populateAttractions(){
         attractions.add(new TouristAttraction("Tivoli","Det er en forlystelsespark på sjælland", "København", List.of(Tags.BØRNEVENLIG, Tags.UNDERHOLDNING, Tags.RESTAURANT)));
         attractions.add(new TouristAttraction("Assistent kirkegården","Det er en kirkegård med mange kendte", "Nørrebro", List.of(Tags.NATUR, Tags.GRATIS)));
-        attractions.add(new TouristAttraction("Bakken", "unik forlystelsespark med en helt særlig historie - midt ude i naturen", "Klampenborg", List.of(Tags.NATUR, Tags.UNDERHOLDNING, Tags.BØRNEVENLIG, Tags.RESTAURANT)));
+        attractions.add(new TouristAttraction("Bakken", "Unik forlystelsespark med en helt særlig historie - midt ude i naturen", "Klampenborg", List.of(Tags.NATUR, Tags.UNDERHOLDNING, Tags.BØRNEVENLIG, Tags.RESTAURANT)));
         attractions.add(new TouristAttraction("Kronborg", "Det er et historisk slot", "Helsingør", List.of(Tags.NATUR, Tags.KUNST, Tags.MUSEUM)));
         attractions.add(new TouristAttraction("Zoologisk have", "Familievenlig park med en masse dyr", "Frederiksberg", List.of(Tags.NATUR, Tags.BØRNEVENLIG, Tags.RESTAURANT)));
         attractions.add(new TouristAttraction("Amalienborg", "Historisk slotsbygning, kongefamiliens bosted, vagtskifte hverdag kl. 12", "København", List.of(Tags.KUNST, Tags.MUSEUM)));
