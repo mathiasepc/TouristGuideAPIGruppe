@@ -6,28 +6,35 @@
     <meta charset="UTF-8">
     <title>Information about attraction</title>
     <link rel="stylesheet" th:href="@{/css/general.css}">
-    <link rel="stylesheet" th:href="@{/css/tags.css}">
+    <link rel="stylesheet" th:href="@{/css/description-box.css}">
+    <link rel="stylesheet" th:href="@{/css/button.css}">
 </head>
 <body>
 
 <header>
-    <div class="box">
+    <div class="header-box">
         <h1><a th:href="@{/}">Information om attraction</a></h1>
     </div>
 </header>
+
 <!-- th:replaces the current tag with the tag defining the fragment -->
 <!-- :: site-navbar betyder "brug kun dette fragment"-->
 <nav th:replace="fragments/navbar :: site-navbar"></nav>
 
-<div class="container">
-    <main>
+<section>
+    <div class="description-box">
         <h1 th:text="${specific.name}"></h1>
         <h4>Beskrivelse:</h4>
         <p id="description" th:text="${specific.description}"></p>
         <h4>Tags:</h4>
-        <p th:each="tag : ${specific.tags}" th:text="${tag.displayName}"></p>
-    </main>
-</div>
+        <p th:each="tag : ${specific.tags}" th:text="${tag.displayName}"></p><br>
+
+
+        <a th:href="@{/attractions}">
+            <button type="button" class="button">Tilbage</button>
+        </a>
+    </div>
+</section>
 
 <!-- th:replaces the current tag with the tag defining the fragment -->
 <!-- :: site-navbar betyder "brug kun dette fragment"-->

@@ -1,15 +1,17 @@
-main{
-    margin-top: 30px;
-    margin-bottom: 30px;
+/* Overskriver section */
+section {
+    display: flex;
+    justify-content: center; /* Centerer tabellen horisontalt */
 }
 
+/* Table itself */
 table {
-    width: 85%; /* Gør tabellen responsiv */
+    width: 100%; /* Gør tabellen responsiv */
+    max-width: 1200px;
     border-collapse: collapse; /* Fjerner dobbeltkantede border */
-    background-color: rgb(128,128,128,0.15) ; /* Baggrundsfarve */
+    background-color: rgb(128,128,128,0.15); /* Baggrundsfarve */
     border-radius: 10px; /* Rundede hjørner */
     overflow: hidden; /* Sikrer, at indhold ikke flyder ud */
-    justify-self: center;
 }
 
 th, td {

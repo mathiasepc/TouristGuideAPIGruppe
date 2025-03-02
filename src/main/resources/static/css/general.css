@@ -1,12 +1,17 @@
-.container {
+/* Fortæller strukturen på siden. */
+body {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto 1fr auto auto;
-    justify-self: center;
-    gap: 20px;
+    /* indstillinger: header, nav, indhold, footer, altså 4 rows */
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas: /* giver variable navne for de forskellige elementer */
+            'banner banner'
+                'nav nav'
+                'main main'
+                'footer footer';
 }
 
 header {
+    grid-area: banner; /* Bliver nr 1 i strukturen. Pga. variabel navn */
     font-size: 25px;
     padding: 130px;
     background-image: url("../images/nyhavn.jpg");
@@ -14,14 +19,13 @@ header {
     text-align: center;
 }
 
-.box{
-    display: inline-block;
+.header-box {
     padding: 20px;
-    width: auto;
-    background-color: rgb(165,42,42,0.35);
+    width: 1fr;
+    background-color: rgb(165, 42, 42, 0.35);
 }
 
-.box a{
+.header-box a {
     color: white;
     text-decoration: none;
 }
@@ -35,12 +39,11 @@ header {
 }
 
 nav {
-    background-color: rgb(165,42,42,0.65); /* sidste tal er gennemsigtighed*/
-    color: white;
-    grid-area: nav;
-    padding: 1em 1em 1em;
     display: flex;
     flex-direction: column;
+    background-color: rgb(165, 42, 42, 0.65); /* sidste tal er gennemsigtighed*/
+    grid-area: nav; /* Bliver nr 2 i strukturen. Pga. variabel navn */
+    padding: 1em 1em 1em;
     align-items: center;
     position: sticky;
     top: 0;
@@ -51,8 +54,6 @@ nav ul {
     display: flex;
     list-style: none;
     color: white;
-    padding: 0;
-    gap: 20px;
 }
 
 nav a {
@@ -61,19 +62,24 @@ nav a {
     padding: 10px 25px;
 }
 
-nav a:hover{
-    background-color: rgb(139,0,0,0.20);
+nav a:hover {
+    background-color: rgb(139, 0, 0, 0.20);
 }
 
+section {
+    grid-area: main; /* Bliver nr 3 i strukturen. Pga. variabel navn */
+    justify-self: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 1em;
+}
 
 footer {
-    grid-column: 1/4;
-    grid-row: 4;
-    background-color:rgb(165,42,42,0.65);
+    grid-area: footer; /* Bliver nr 4 i strukturen. Pga. variabel navn */
+    /* Giver luft imellem section og footer */
+    margin-top: 1em;
+    background-color: rgb(165, 42, 42, 0.65);
     color: white;
     text-align: center;
     padding: 10px;
 }
-
-
-

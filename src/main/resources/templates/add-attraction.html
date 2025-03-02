@@ -5,35 +5,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Insert attraction</title>
-    <link rel="stylesheet" th:href="@{/css/form.css}">
     <link rel="stylesheet" th:href="@{/css/general.css}">
+    <link rel="stylesheet" th:href="@{/css/form.css}">
+    <link rel="stylesheet" th:href="@{/css/button.css}">
 </head>
 <body>
+
 <header>
-    <div class="box">
+    <div class="header-box">
     <h1><a th:href="@{/}">Tilføj attraktion</a></h1>
     </div>
 </header>
 
 <nav th:replace="fragments/navbar :: site-navbar"></nav>
 
+<section>
 <form th:action="@{/attractions/save}" th:method="post" th:object="${attraction}">
     <label for="name">Navn:</label>
-    <input type="text" th:field="*{name}" id="name" required><br>
+    <input required type="text" id="name" th:field="*{name}"><br>
+
     <label for="description">Beskrivelse:</label>
-    <textarea rows="5" cols="30" th:field="*{description}" id="description" required></textarea><br>
+    <textarea required rows="5" cols="30" id="description" th:field="*{description}"></textarea><br>
+
     <label for="city">By:</label>
-    <input type="text" th:field="*{city}" id="city" required><br>
+    <input required type="text" id="city" th:field="*{city}"><br>
     <label>Tags:</label>
     <div th:each="tag : ${availableTags}">
-        <input type="checkbox" th:value="${tag}" th:field="*{tags}" id="${'tag-' + tag}"/>
+        <input type="checkbox" id="${'tag-' + tag}" th:value="${tag}" th:field="*{tags}"/>
         <label th:for="${'tag-' + tag}" th:text="${tag.displayName}"></label><br>
     </div>
     <!-- chechbox'en id gør at der bliver lavet et unikt id for de forskellige tags. Viser string concatenation i th.
       f.eks. hvis tag er gratis bliver id'et: tag-gratis -->
-    <button type="submit">Tilføj</button>
+    <button class="button" type="submit">Tilføj</button>
 </form>
+</section>
 
 <footer th:replace="fragments/footer :: site-footer"></footer>
+
 </body>
 </html>

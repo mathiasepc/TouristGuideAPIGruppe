@@ -1,63 +1,58 @@
-.welcome-box{
-    grid-column: 1/4;
-    grid-row: 2;
+h3 {
+    text-align: center;
+}
+
+/* container for welcome box. Placering på selve skærmen og størrelse */
+.welcome-box-container {
+    grid-column: 1/ -1; /* Strækker den over hele rækken */
+    grid-row: 1; /* Placerer den i første række */
     justify-self: center;
-    width: 550px;
-    height: 420px;
-    background-color: rgb(128,128,128,0.15);
-    padding: 35px;
-    border-radius: 50px;
-    text-align: center;
+    width: 50%; /* Begrænser bredden */
+    height: 40%; /* Begrænser højden */
 }
 
-.image-box-one{
-    grid-row: 3;
-    grid-column: 1;
-    margin-top: 100px;
+/* indstillinger for udseende */
+.welcome-box {
+    background-color: rgb(128, 128, 128, 0.15);
+    border-radius: 50px;
+    text-align: center;
     padding: 20px;
-    border-radius: 50px;
-    background-color:rgb(128,128,128,0.15);
-    margin-left: auto;
+    justify-content: center;
 }
 
-h3{
-    text-align: center;
-}
-
-img{
+img {
     border-radius: 50px;
 }
 
-h4{
+h4 {
     text-align: center;
     color: black;
 }
 
-h4 a{
+h4 a {
     text-decoration: none;
     color: black;
 }
 
-.image-box-two{
-    grid-row: 3;
-    grid-column: 2;
-    margin-top: 100px;
-    padding: 20px;
-    width: 350px;
-    margin-left: auto;
-    border-radius: 50px;
-    background-color:rgb(128,128,128,0.15);
+/* container for welcome box. Placering på selve skærmen og størrelse */
+.image-box-container {
+    display: grid;
+    grid-row: 4;
+    grid-template-columns: repeat(3, 1fr); /* 3 kolonner, der hver fylder lige meget */
+    grid-gap: 20px; /* Afstand mellem bokse */
+    width: 100%; /* Fylder hele bredden af containeren */
+    margin-top: 50px; /* Placerer gridet lidt ned på skærmen */
+    justify-items: center; /* Centrerer elementerne horisontalt */
 }
 
-.image-box-three{
-    grid-row: 3;
-    grid-column: 3;
-    margin-top: 100px;
-    margin-left: auto;
+/* selve udseendet */
+.image-box-common {
     padding: 20px;
-    width: 350px;
     border-radius: 50px;
-    background-color: rgb(128,128,128,0.15);
+    background-color: rgb(128, 128, 128, 0.15);
+    width: 100%; /* Sætter bredden til 100% af den tilgængelige kolonne */
+    max-width: 350px; /* Maksimal bredde på hver boks */
+    text-align: center; /* Centrerer teksten */
 }
 
 

@@ -9,15 +9,17 @@
     <link rel="stylesheet" th:href="@{/css/attractions.css}">
 </head>
 <body>
+
 <header>
-    <div class="box">
-    <h1><a th:href="@{/}">Attraktioner</a></h1>
+    <div class="header-box">
+        <h1><a th:href="@{/}">Attraktioner</a></h1>
     </div>
 </header>
 <!-- th:replaces the current tag with the tag defining the fragment -->
 <!-- :: site-navbar betyder "brug kun dette fragment"-->
 <nav th:replace="fragments/navbar :: site-navbar"></nav>
-<main>
+
+<section>
     <table>
         <thead>
         <tr>
@@ -37,15 +39,17 @@
             <td><a th:href="@{/attractions/{name}/tags(name=${attraction.name})}">Tags</a></td>
             <!-- Hvis attraction.name indeholder mellemrum eller specialtegn, kan det give problemer.
             Det sørger for, at navnet bliver korrekt URL-encoded. -->
-            <td><a th:href="@{/attractions/{name}(name=${attraction.name})}">View</a></td>
-            <td><a th:href="@{/attractions/{name}/edit(name=${attraction.name})}">Update</a></td>
+            <td><a th:href="@{/attractions/{name}(name=${attraction.name})}">Se attraktion</a></td>
+            <td><a th:href="@{/attractions/{name}/edit(name=${attraction.name})}">Opdater</a></td>
         </tr>
         </tbody>
     </table>
-</main>
+</section>
+
 <!-- th:replaces the current tag with the tag defining the fragment -->
 <!-- :: site-navbar betyder "brug kun dette fragment"-->
 <footer th:replace="fragments/footer :: site-footer"></footer>
+
 </body>
 </html>
 
