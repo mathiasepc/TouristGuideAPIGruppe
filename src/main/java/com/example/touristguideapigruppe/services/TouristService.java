@@ -49,5 +49,7 @@ public class TouristService {
         return touristRepository.deleteAttraction(exist);
     }
 
-
+    public List<String> getCities(){
+        return touristRepository.getCities();
+    }
 }

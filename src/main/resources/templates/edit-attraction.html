@@ -5,39 +5,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Update attraction</title>
-    <link rel="stylesheet" th:href="@{/css/form.css}">
     <link rel="stylesheet" th:href="@{/css/general.css}">
+    <link rel="stylesheet" th:href="@{/css/form.css}">
+    <link rel="stylesheet" th:href="@{/css/button.css}">
 </head>
 <body>
+
 <header>
-    <div class="box">
-    <h1><a th:href="@{/}">Update/Delete attraction</a></h1>
+    <div class="header-box">
+        <h1><a th:href="@{/}">Update/Delete attraction</a></h1>
     </div>
 </header>
 
 <nav th:replace="fragments/navbar :: site-navbar"></nav>
 
-<div class="button-container">
+<section>
     <form th:action="@{/attractions/update}" th:method="post" th:object="${attraction}">
         <label for="name">Name:</label>
-        <input readonly type="text" th:field="*{name}" th:value="*{name}" id="name"><br>
+        <input readonly id="name" type="text" th:field="*{name}" th:value="*{name}"><br>
+
         <label for="description">Beskrivelse:</label>
-        <textarea rows="5" cols="30" th:field="*{description}" th:value="*{name}" id="description"></textarea><br>
-        <label for="city">By:</label>
-        <input type="text" th:field="*{city}" id="city" required><br>
+        <textarea rows="5" cols="30" id="description" th:field="*{description}" th:value="*{name}"></textarea><br>
+
+        <label for="cities">By:</label>
+        <select name="cities" id="cities"
+                th:field="*{city}">
+            <option th:each="city : ${cities}" th:value="${city}" th:text="${city}"
+                    th:selected="${city.equals(attraction.city)}"/>
+        </select><br>
+
         <label>Tags:</label>
         <div th:each="tag : ${availableTags}">
             <!-- th:checked, tjekker om et tag allerede er tilknyttet den en attraktion -->
-            <input type="checkbox" th:value="${tag}" th:field="*{tags}" th:id="${'tag-' + tag}" th:checked="${attraction.tags != null and attraction.tags.contains(tag)}" />
+            <input type="checkbox" th:value="${tag}" th:field="*{tags}" th:id="${'tag-' + tag}"
+                   th:checked="${attraction.tags != null and attraction.tags.contains(tag)}"/>
             <label th:for="${'tag-' + tag}" th:text="${tag.displayName}"></label><br>
         </div>
-        <button type="submit">Opdater</button><br>
-        <input class="fakeButton" th:formaction="@{/attractions/delete/{name}(name=${attraction.name})}" type="submit" value="Delete"/>
+
+        <button type="submit" class="button">Opdater</button>
+        <br>
+        <input type="submit" class="button" th:formaction="@{/attractions/delete/{name}(name=${attraction.name})}"
+               value="Delete"/>
     </form>
-
-
-</div>
+</section>
 
 <footer th:replace="fragments/footer :: site-footer"></footer>
+
 </body>
 </html>

@@ -1,3 +1,4 @@
+/* Overskriver body, fra general.css, fordi error er lidt en enkelt stående side */
 body {
     display: flex;
     justify-content: center;

@@ -4,35 +4,30 @@
     <meta charset="UTF-8">
     <title>Hvem er vi?</title>
     <link rel="stylesheet" th:href="@{/css/general.css}">
-    <link rel="stylesheet" th:href="@{/css/about.css}">
+    <link rel="stylesheet" th:href="@{/css/grey-box.css}">
 </head>
+<body>
 
 <header>
-    <div class="box">
+    <div class="header-box">
         <h1><a th:href="@{/}">Hvem er vi?</a></h1>
     </div>
 </header>
-
-<body>
 
 <!-- Navbar -->
 <nav th:replace="fragments/navbar :: site-navbar"></nav>
 
 <!-- Main content -->
-<main class="description-box">
-    <h1>
-        <h2>Hvem er vi?</h2>
-    </h1>
-
-    <section class="about-text">
+<section>
+    <div class="description-box">
+        <h1>Hvem er vi?</h1>
         <p>
             Vi er din guide til Danmarks bedste attraktioner. Fra historiske slotte og museer
             til naturskønne parker og forlystelsesparker. Vi hjælper turister med at opdage
             de skjulte perler og de mest populære steder i Danmark.
         </p>
-    </section>
-
-</main>
+    </div>
+</section>
 
 <!-- Footer -->
 <footer th:replace="fragments/footer :: site-footer"></footer>

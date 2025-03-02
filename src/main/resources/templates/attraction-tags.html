@@ -5,29 +5,32 @@
     <meta charset="UTF-8">
     <title>Tags</title>
     <link rel="stylesheet" th:href="@{/css/general.css}">
-    <link rel="stylesheet" th:href="@{/css/tags.css}">
+    <link rel="stylesheet" th:href="@{/css/grey-box.css}">
+    <link rel="stylesheet" th:href="@{/css/button.css}">
 </head>
+<body>
 
 <header>
-    <div class="box">
+    <div class="header-box">
         <h1><a th:href="@{/}">Tags</a></h1>
     </div>
 </header>
 
 <nav th:replace="fragments/navbar :: site-navbar"></nav>
 
-<div class="container">
-    <main>
-        <h2 th:text="${specific.name} + ' tags'"></h2>
-        <p th:each="tag : ${specific.tags}" th:text="${tag.displayName}"></p>
+<section>
+    <div class="description-box">
+        <h1 th:text="${specific.name} + ' tags'"></h1>
+        <p th:each="tag : ${specific.tags}" th:text="${tag.displayName}"></p><br>
 
 
-        <div class="button">
-            <a th:href="@{/attractions}">
-                <button type="button">Tilbage</button>
-            </a>
-        </div>
-    </main>
-</div>
+        <a th:href="@{/attractions}">
+            <button type="button" class="button">Tilbage</button>
+        </a>
+    </div>
+</section>
+
 <footer th:replace="fragments/footer :: site-footer"></footer>
+
+</body>
 </html>

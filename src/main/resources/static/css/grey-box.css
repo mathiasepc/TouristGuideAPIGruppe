@@ -1,0 +1,18 @@
+/* Vi har centeret det i General.css. Derfor er dette nok til align center */
+.description-box {
+    grid-column: 2/3;
+    padding: 20px;
+    background-color: rgb(128,128,128,0.15);
+    border-radius: 15px;
+    text-align: center;
+    max-width: 800px; /* Begræns bredden */
+    overflow: hidden;
+}
+
+.description-box p {
+    margin: 5px;
+}
+
+.description-box h4 {
+    margin: 10px;
+}

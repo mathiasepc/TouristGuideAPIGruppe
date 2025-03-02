@@ -42,6 +42,7 @@ public class TouristController {
     public String getAddAttraction(Model model) {
         List<Tags> availableTags = Arrays.asList(Tags.values());
         model.addAttribute("availableTags", availableTags);
+        model.addAttribute("cities", touristService.getCities());
         model.addAttribute("attraction",
                 new TouristAttraction());
 
@@ -71,6 +72,7 @@ public class TouristController {
 
         List<Tags> availableTags = Arrays.asList(Tags.values());
         model.addAttribute("availableTags", availableTags);
+        model.addAttribute("cities", touristService.getCities());
 
         return "edit-attraction";
     }

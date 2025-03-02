@@ -10,9 +10,11 @@ import java.util.List;
 @Repository
 public class TouristRepository {
     private final List<TouristAttraction> attractions;
+    private final List<String> cities;
 
     public TouristRepository() {
         this.attractions = new ArrayList<>();
+        cities = populateCities();
         populateAttractions();
     }
 
@@ -46,6 +48,10 @@ public class TouristRepository {
         return attraction;
     }
 
+    public List<String> getCities() {
+        return cities;
+    }
+
     private void populateAttractions(){
         attractions.add(new TouristAttraction("Tivoli","Det er en forlystelsespark på sjælland", "København", List.of(Tags.BØRNEVENLIG, Tags.UNDERHOLDNING, Tags.RESTAURANT)));
         attractions.add(new TouristAttraction("Assistent kirkegården","Det er en kirkegård med mange kendte", "Nørrebro", List.of(Tags.NATUR, Tags.GRATIS)));
@@ -58,5 +64,15 @@ public class TouristRepository {
         attractions.add(new TouristAttraction("SMK", "Statens museum for kunst rummer mere end 700 års kunst og kunsthistorie", "København", List.of(Tags.KUNST, Tags.MUSEUM)));
         attractions.add(new TouristAttraction("Glyptoteket", "Hop forbi og se en imponerende samling af antik kunst og skulpturer i smukke omgivelser", "København", List.of(Tags.KUNST, Tags.MUSEUM)));
         attractions.add(new TouristAttraction("Nyhavn", "Hyggelig lille gade, ved vandet med masser af cafe muligheder", "København",List.of(Tags.RESTAURANT)));
+    }
+
+    private List<String> populateCities(){
+        return List.of(
+                "København", "Helsingør", "Klampenborg", "Aarhus", "Odense",
+                "Aalborg", "Esbjerg", "Randers", "Kolding", "Horsens",
+                "Vejle", "Roskilde", "Herning", "Hørsholm", "Fredericia",
+                "Næstved", "Silkeborg", "Frederikshavn", "Hillerød", "Svendborg",
+                "Holstebro", "Slagelse", "Tønder", "Skagen", "Viborg"
+        );
     }
 }
