@@ -1,9 +1,19 @@
 form {
     display: grid;
     grid-column: 1/ -1;
-    max-width: 600px;
+    max-width: 800px;
     justify-content: center;
     background-color: rgba(128, 128, 128, 0.15);
     border-radius: 50px;
     padding: 40px; /* Giver lidt luft omkring indholdet */
+    overflow: hidden;
+}
+
+/* Tillader resizing op til max-width, og holder textarea inden for grå boksens grænser */
+textarea {
+    resize: horizontal; /* Tillader resizing kun horisontalt */
+    width: 500px; /* Gør textarea'en bred nok til at fylde boksen */
+    max-width: 800px; /* Begrænser resizing til max-width på form */
+    height: 150px; /* Fast højde (juster efter behov) */
+    box-sizing: border-box; /* Sørger for, at padding ikke øger størrelsen */
 }
