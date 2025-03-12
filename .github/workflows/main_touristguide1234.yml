@@ -11,8 +11,10 @@ on:
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
     permissions:
+      checks: write
       contents: read #This is required for actions/checkout
 
     steps:
@@ -24,8 +26,13 @@ jobs:
           java-version: '17'
           distribution: 'microsoft'
 
+
       - name: Build with Maven
         run: mvn clean install
+
+      - name: Publish Test Report
+        if: success() || failure()
+        uses: scacap/action-surefire-report@v1
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
