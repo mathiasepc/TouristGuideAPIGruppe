@@ -20,8 +20,8 @@
 
 <section>
     <div class="description-box">
-        <h1 th:text="${specific.name} + ' tags'"></h1>
-        <p th:each="tag : ${specific.tags}" th:text="${tag.displayName}"></p><br>
+        <h1 th:text="${attraction.name} + ' tags'"></h1>
+        <p th:each="tag : ${attraction.tags}" th:text="${tag.name}"></p><br>
 
 
         <a th:href="@{/attractions}">

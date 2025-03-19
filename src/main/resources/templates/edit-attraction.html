@@ -21,31 +21,38 @@
 
 <section>
     <form th:action="@{/attractions/update}" th:method="post" th:object="${attraction}">
-        <label for="name">Name:</label>
-        <input readonly id="name" type="text" th:field="*{name}" th:value="*{name}"><br>
+        <input hidden th:field="*{id}">
+
+        <label for="name">Navn:</label>
+        <input readonly type="text" id="name"
+               th:field="*{name}" th:value="*{name}"><br>
 
         <label for="description">Beskrivelse:</label>
-        <textarea rows="5" cols="30" id="description" th:field="*{description}" th:value="*{name}"></textarea><br>
+        <textarea rows="6" cols="30" id="description"
+                  th:field="*{description}" th:value="*{name}"></textarea><br>
 
         <label for="cities">By:</label>
-        <select name="cities" id="cities"
-                th:field="*{city}">
-            <option th:each="city : ${cities}" th:value="${city}" th:text="${city}"
-                    th:selected="${city.equals(attraction.city)}"/>
+        <select required name="cities" id="cities"
+                th:field="*{cityId}">
+            <option th:each="city : ${cities}" th:value="${city.id}" th:text="${city.name}"
+                    th:selected="${attraction.getCityId()}"></option>}"/>
         </select><br>
 
-        <label>Tags:</label>
-        <div th:each="tag : ${availableTags}">
-            <!-- th:checked, tjekker om et tag allerede er tilknyttet den en attraktion -->
-            <input type="checkbox" th:value="${tag}" th:field="*{tags}" th:id="${'tag-' + tag}"
-                   th:checked="${attraction.tags != null and attraction.tags.contains(tag)}"/>
-            <label th:for="${'tag-' + tag}" th:text="${tag.displayName}"></label><br>
-        </div>
+        <label>Tags:<br>
+            <input type="checkbox" name="Tags"
+                   th:each="tag : ${tags}"
+                   th:text="${tag.name}"
+                   th:value="${tag.id}"
+                   th:field="*{tagIds}"
+                   th:checked="${attraction.getTagIds().contains(tag.id)}">
+        </label><br>
 
         <button type="submit" class="button">Opdater</button>
         <br>
-        <input type="submit" class="button" th:formaction="@{/attractions/delete/{name}(name=${attraction.name})}"
-               value="Delete"/>
+        <!-- {id} det er variablen,  (id=${attraction.id}) her binder du en variabel til en placeholder.
+                Altså {id} -->
+        <input class="button" type="submit" value="Slet"
+               th:formaction="@{/attractions/delete/{id}(id=${attraction.id})}"/>
     </form>
 </section>
 
