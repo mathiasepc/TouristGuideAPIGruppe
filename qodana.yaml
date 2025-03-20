@@ -1,3 +1,4 @@
+
 #-------------------------------------------------------------------------------#
 #               Qodana analysis is configured by qodana.yaml file               #
 #             https://www.jetbrains.com/help/qodana/qodana-yaml.html            #
@@ -23,4 +24,6 @@ projectJDK: "21" #(Applied in CI/CD pipeline)
 #Specify Qodana linter for analysis (Applied in CI/CD pipeline)
 linter: jetbrains/qodana-jvm:2024.3
 include:
+  - name: CheckDependencyLicenses
   - name: CyclomaticComplexity
+
