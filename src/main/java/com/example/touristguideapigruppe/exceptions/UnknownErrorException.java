@@ -1,8 +1,8 @@
 package com.example.touristguideapigruppe.exceptions;
 
-public class UnkownErrorException extends RuntimeException{
+public class UnknownErrorException extends RuntimeException{
 
-    public UnkownErrorException(){
+    public UnknownErrorException(){
         super("Noget gik galt");
     }
 }

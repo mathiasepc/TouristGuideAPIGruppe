@@ -1,15 +1,16 @@
 package com.example.touristguideapigruppe.controllers;
 
 import com.example.touristguideapigruppe.exceptions.NotFoundException;
-import com.example.touristguideapigruppe.exceptions.NullException;
-import com.example.touristguideapigruppe.exceptions.UnkownErrorException;
-import com.example.touristguideapigruppe.models.Tags;
+import com.example.touristguideapigruppe.exceptions.UnknownErrorException;
+import com.example.touristguideapigruppe.models.KeyValuePair;
+import com.example.touristguideapigruppe.models.SaveTouristAttraction;
 import com.example.touristguideapigruppe.models.TouristAttraction;
 import com.example.touristguideapigruppe.services.TouristService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,100 +23,104 @@ public class TouristController {
         this.touristService = touristService;
     }
 
-    // hent "index" til attraction
     @GetMapping("")
     public String getAttractions(Model model) {
-        List<TouristAttraction> attractions = touristService.getAttractions();
-        model.addAttribute("attractions", attractions);
+        model.addAttribute("attractions",
+                touristService.getAttractions());
         return "attractions";
     }
 
-    // hente specifik
-    @GetMapping("{name}")
-    public String getByName(@PathVariable String name, Model model) throws NotFoundException {
-        model.addAttribute("specific", touristService.getByName(name));
+    @GetMapping("{id}")
+    public String getById(@PathVariable int id, Model model) throws NotFoundException {
+        if(id <= 0) throw new IllegalArgumentException();
+
+        model.addAttribute("specific",
+                touristService.getById(id));
         return "attraction-information";
     }
 
-    // henter add layout
+    @GetMapping("{id}/tags")
+    public String getTagDisplayName(@PathVariable("id") int id, Model model) throws NotFoundException {
+        if(id == 0) throw new IllegalArgumentException();
+
+        TouristAttraction result = touristService.getById(id);
+        if(result == null)
+            throw new UnknownErrorException();
+
+        model.addAttribute("attraction",result);
+
+        return "attraction-tags";
+    }
+
+    // henter layout til add
     @GetMapping("add")
     public String getAddAttraction(Model model) {
-        List<Tags> availableTags = Arrays.asList(Tags.values());
-        model.addAttribute("availableTags", availableTags);
-        model.addAttribute("cities", touristService.getCities());
         model.addAttribute("attraction",
-                new TouristAttraction());
+                new SaveTouristAttraction());
+        model.addAttribute("tags", touristService.getTags());
+        model.addAttribute("cities", touristService.getCities());
 
         return "add-attraction";
     }
 
-    // tilføj metoden
+    // indsætter en attraktion
     @PostMapping("save")
-    public String saveAttraction(@ModelAttribute("attraction") TouristAttraction attraction) {
-        if (attraction == null) throw new NullException();
-
+    public String addAttraction(@ModelAttribute("attraction") SaveTouristAttraction attraction) {
+        if (attraction == null) throw new IllegalArgumentException();
 
         TouristAttraction result = touristService.addAttraction(attraction);
-        if (result == null) throw new UnkownErrorException();
+        if (result == null) throw new UnknownErrorException();
 
         // laver en 302 response sådan, at ikke kan poste det samme igen.
         return "redirect:/attractions";
     }
 
-    // henter update/delete layout
-    @GetMapping("{name}/edit")
-    public String editAttraction(@PathVariable("name") String name, Model model) throws NotFoundException {
-        if (name == null) throw new NullException();
+    // henter layout for edit og slet
+    @GetMapping("{id}/edit")
+    public String getHandleAttraction(@PathVariable("id") int id, Model model) throws NotFoundException {
+        if (id == 0) throw new IllegalArgumentException();
 
-        TouristAttraction result = touristService.getByName(name);
-        model.addAttribute("attraction", result);
-
-        List<Tags> availableTags = Arrays.asList(Tags.values());
-        model.addAttribute("availableTags", availableTags);
+        model.addAttribute("attraction", getSaveAttraction(id));
         model.addAttribute("cities", touristService.getCities());
-
+        model.addAttribute("tags", touristService.getTags());
         return "edit-attraction";
     }
+    // Laver en SaveAttraction, så vi kan updatere en attraction.
+    // Den kunne ikke finde ud af, at indsætte eksisterende værdier før jeg ændrede til SaveAttraction.
+    private SaveTouristAttraction getSaveAttraction(int id) {
+        TouristAttraction result = touristService.getById(id);
 
-    // opdater metoden
-    @PostMapping("update")
-    public String updateAttraction(@ModelAttribute("attraction") TouristAttraction newAttraction, @RequestParam ("tags") List<Tags> tags) throws NotFoundException {
-        if (newAttraction == null) throw new NullException();
-
-        newAttraction.setTags(tags);
-        TouristAttraction result = touristService.updateAttraction(newAttraction);
-        if (result == null) throw new UnkownErrorException();
-
-        // laver en 302 response sådan, at ikke kan poste det samme igen.
-        return "redirect:/attractions";
-    }
-
-    // delete metoden
-    @PostMapping("delete/{name}")
-    public String deleteAttraction(@PathVariable String name) throws NotFoundException {
-        if (name == null) throw new NullException();
-
-        TouristAttraction result = touristService.deleteAttraction(name);
-        if (result == null) throw new UnkownErrorException();
-
-        // laver en 302 response sådan, at ikke kan poste det samme igen.
-        return "redirect:/attractions";
-    }
-
-    //
-    @GetMapping("{name}/tags")
-    public String getTagsByAttraction(@PathVariable String name, Model model) throws NotFoundException{
-        if (name == null) throw new NullException();
-
-        TouristAttraction attraction = touristService.getByName(name);
-
-        if (attraction == null) {
-            throw new NotFoundException("Attraction not found");
+        // Setup tags for SaveAttraction
+        List<Integer> tags = new ArrayList<>();
+        for (KeyValuePair tag : result.getTags()) {
+            tags.add(tag.getId());
         }
 
-        model.addAttribute("specific", attraction);
-        return "attraction-tags";
+        return new SaveTouristAttraction(result.getId(),
+                result.getName(),result.getDescription(),result.getCity().getId(), tags);
     }
 
+    // opdaterer en attraktion
+    @PostMapping("update")
+    public String updateAttraction(@ModelAttribute("attraction") SaveTouristAttraction newAttraction) throws NotFoundException {
+        if (newAttraction == null) throw new IllegalArgumentException();
 
+        boolean result = touristService.updateAttraction(newAttraction);
+        if(!result) throw new UnknownErrorException();
+
+        // laver en 302 response sådan, at ikke kan poste det samme igen.
+        return "redirect:/attractions";
+    }
+
+    // sletter en attraktion
+    @PostMapping("delete/{id}")
+    public String deleteAttraction(@PathVariable int id) throws NotFoundException {
+        if (id == 0) throw new IllegalArgumentException();
+
+        boolean result = touristService.deleteAttraction(id);
+        if (!result) throw new UnknownErrorException();
+
+        // laver en 302 response sådan, at ikke kan poste det samme igen.
+        return "redirect:/attractions";
+    }
 }

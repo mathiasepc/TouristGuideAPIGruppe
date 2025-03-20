@@ -22,26 +22,29 @@
 <section>
     <form th:action="@{/attractions/save}" th:method="post" th:object="${attraction}">
         <label for="name">Navn:</label>
-        <input required type="text" id="name" th:field="*{name}"><br>
+        <input required id="name" type="text" th:field="*{name}"><br>
 
         <label for="description">Beskrivelse:</label>
-        <textarea required rows="5" cols="30" id="description" th:field="*{description}"></textarea><br>
+        <textarea required rows="6" cols="30" id="description" th:field="*{description}"></textarea><br>
 
         <label for="cities">By:</label>
-        <select name="cities" id="cities"
-                th:field="*{city}">
-            <option selected value="">Vælg venligst</option>
-            <option th:each="city : ${cities}" th:value="${city}" th:text="${city}"/>
+        <select required name="cities" id="cities"
+                th:field="*{cityId}">
+            <option th:each="city : ${cities}" th:value="${city.id}" th:text="${city.name}"></option>
         </select><br>
 
-        <label>Tags:</label>
-        <div th:each="tag : ${availableTags}">
-            <input type="checkbox" id="${'tag-' + tag}" th:value="${tag}" th:field="*{tags}"/>
-            <label th:for="${'tag-' + tag}" th:text="${tag.displayName}"></label><br>
-        </div>
-        <!-- chechbox'en id gør at der bliver lavet et unikt id for de forskellige tags. Viser string concatenation i th.
-          f.eks. hvis tag er gratis bliver id'et: tag-gratis -->
-        <button class="button" type="submit">Tilføj</button>
+        <label>Tags:<br>
+            <input type="checkbox" name="Tags"
+                   th:each="tag : ${tags}"
+                   th:text="${tag.name}"
+                   th:value="${tag.id}"
+                   th:field="*{tagIds}">
+        </label><br>
+
+        <button type="submit" class="button">Ok</button>
+        <br>
+        <input type="submit" class="button" value="Fortryd"
+               th:href="@{/}">
     </form>
 </section>
 

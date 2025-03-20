@@ -2,19 +2,27 @@ package com.example.touristguideapigruppe.models;
 
 import java.util.List;
 
+// Bliver brugt til at vise en attraktion
 public class TouristAttraction {
-    private String name,description, city;
-    private List<Tags> tags;
+    private int id;
+    private String name, description;
+    private KeyValuePair city;
+    private List<KeyValuePair> tags;
 
-    public TouristAttraction(){
-
-    }
-
-    public TouristAttraction(String name, String description, String city, List<Tags> tags) {
+    public TouristAttraction(int id, String name, String description, KeyValuePair city, List<KeyValuePair> tags) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.city = city;
         this.tags = tags;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -33,19 +41,20 @@ public class TouristAttraction {
         this.description = description;
     }
 
-    public String getCity() {
+
+    public KeyValuePair getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(KeyValuePair city) {
         this.city = city;
     }
 
-    public List<Tags> getTags() {
+    public List<KeyValuePair> getTags() {
         return tags;
     }
 
-    public void setTags(List<Tags> tags) {
+    public void setTag(List<KeyValuePair> tags) {
         this.tags = tags;
     }
 }
