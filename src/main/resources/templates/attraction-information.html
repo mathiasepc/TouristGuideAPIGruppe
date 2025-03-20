@@ -27,7 +27,7 @@
         <h4>Beskrivelse:</h4>
         <p id="description" th:text="${specific.description}"></p>
         <h4>Tags:</h4>
-        <p th:each="tag : ${specific.tags}" th:text="${tag.displayName}"></p><br>
+        <p th:each="tag : ${specific.tags}" th:text="${tag.name}"></p><br>
 
 
         <a th:href="@{/attractions}">
