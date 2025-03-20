@@ -44,6 +44,27 @@ jobs:
           name: java-app
           path: '${{ github.workspace }}/target/*.jar'
 
+  qodana:
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      contents: write
+      pull-requests: write
+      checks: write
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - name: 'Qodana Scan'
+        uses: JetBrains/qodana-action@v2024.3
+        with:
+          args: --property=project.open.type=maven
+        env:
+          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
+
+
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -74,4 +95,5 @@ jobs:
           app-name: 'TouristGuide1234'
           slot-name: 'Production'
           package: '*.jar'
-          
+
+
